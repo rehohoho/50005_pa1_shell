@@ -72,3 +72,4 @@ Testing functions
 */
 void test_read_line_stdin(void);
 void test_tokenize_line_stdin(void);
+int test_process_command(void);
