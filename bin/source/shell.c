@@ -301,3 +301,20 @@ int main(int argc, char **argv)
 
   return 0;
 }
+
+
+void test_read_line_stdin() {
+  char* line = read_line_stdin();
+  printf("The fetched line is : %s \n", line);
+}
+
+
+void test_tokenize_line_stdin() {
+    char* line = read_line_stdin();
+    printf("The fetched line is : %s \n", line);
+    
+    char** args = tokenize_line_stdin(line);
+    for (char **arg=args; *arg; ++arg) {
+      printf("found %s\n", *arg);
+    }
+}

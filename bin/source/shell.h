@@ -66,3 +66,9 @@ void reset();
 void setup_program_path(char **args);
 void print_error_message(char **args);
 int exec_sys_prog(char **args);
+
+/*
+Testing functions
+*/
+void test_read_line_stdin(void);
+void test_tokenize_line_stdin(void);
