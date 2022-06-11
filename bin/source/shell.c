@@ -189,7 +189,12 @@ char *read_line_stdin(void)
   // DO NOT PRINT ANYTHING TO THE OUTPUT
 
   /***** BEGIN ANSWER HERE *****/
-
+  size_t len = 0;
+  if (line != NULL) {
+    getline(&line, &len, stdin);
+  } else {
+    printf("line is empty\n");
+  }
   /*********************/
 
   return line;
