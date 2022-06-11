@@ -190,9 +190,12 @@ char *read_line_stdin(void)
 
   /***** BEGIN ANSWER HERE *****/
   size_t len = 0;
-  if (line != NULL) {
+  if (line != NULL) 
+  {
     getline(&line, &len, stdin);
-  } else {
+  } 
+  else 
+  {
     printf("line is empty\n");
   }
   /*********************/
@@ -220,13 +223,17 @@ char **tokenize_line_stdin(char *line)
   /***** BEGIN ANSWER HERE *****/
   char **a = tokens; // store iterator
   
-  if (tokens != NULL) {
+  if (tokens != NULL) 
+  {
     token = strtok(line, SHELL_INPUT_DELIM);
-    while (token != NULL) {
+    while (token != NULL) 
+    {
       *a++ = token;
       token = strtok(NULL, SHELL_INPUT_DELIM);
     }
-  } else {
+  } 
+  else 
+  {
     printf("malloc'ed tokens is null");
   }
   /*********************/
