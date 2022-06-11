@@ -165,7 +165,52 @@ int process_command(char **args)
   // DO NOT PRINT ANYTHING TO THE OUTPUT
 
   /***** BEGIN ANSWER HERE *****/
-
+  if (args[0] == NULL) 
+  {
+    return 1;
+  }
+  else
+  {
+    if (strcmp(args[0], "cd") == 0)
+    {
+      return shell_cd(args);
+    }
+    else if (strcmp(args[0], "help") == 0)
+    {
+      return shell_help(args);
+    }
+    else if (strcmp(args[0], "exit") == 0)
+    {
+      return shell_exit(args);
+    }
+    else if (strcmp(args[0], "usage") == 0)
+    {
+      return shell_usage(args);
+    }
+    else
+    {
+      pid_t pid = fork();
+      if (pid < 0)
+      {
+        fprintf(stderr, "Fork has failed. Exiting now");
+        return 1;
+      }
+      else if (pid == 0)
+      {
+        // child process
+        exec_sys_prog(args);
+      }
+      else
+      {
+        int status;
+        waitpid(pid, &status, WUNTRACED);        
+        // if child terminates properly, WIFEXITED(status) returns TRUE
+        if (WIFEXITED(status)){
+            child_exit_status = WEXITSTATUS(status);
+        }
+      }
+    }
+  }
   /*********************/
   if (child_exit_status != 1)
   {
