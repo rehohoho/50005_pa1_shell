@@ -334,41 +334,24 @@ void main_loop(void)
 
 int main(int argc, char **argv)
 {
+  return test_process_command();
+}
 
-  printf("CSEShell Run successful. Running now: \n");
-
-  // Setup path
-  if (getcwd(output_file_path, sizeof(output_file_path)) != NULL)
-  {
-    printf("Current working dir: %s\n", output_file_path);
-  }
-  else
-  {
-    perror("getcwd() error, exiting now.");
-    return 1;
-  }
-
-  // Run command loop
-  main_loop();
-
+int test_read_line_stdin() {
+  char* line = read_line_stdin();
+  printf("The fetched line is : %s \n", line);
   return 0;
 }
 
-
-void test_read_line_stdin() {
+int test_tokenize_line_stdin() {
   char* line = read_line_stdin();
   printf("The fetched line is : %s \n", line);
-}
 
-
-void test_tokenize_line_stdin() {
-    char* line = read_line_stdin();
-    printf("The fetched line is : %s \n", line);
-    
-    char** args = tokenize_line_stdin(line);
-    for (char **arg=args; *arg; ++arg) {
-      printf("found %s\n", *arg);
-    }
+  char** args = tokenize_line_stdin(line);
+  for (char **arg=args; *arg; ++arg) {
+    printf("found %s\n", *arg);
+  }
+  return 0;
 }
 
 int test_process_command() {
