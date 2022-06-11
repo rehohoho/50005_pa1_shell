@@ -218,7 +218,17 @@ char **tokenize_line_stdin(char *line)
   // 3. Store the address to first letter of each word in the command in tokens
   // 4. Add NULL termination in tokens so we know how many "valid" addresses there are in tokens
   /***** BEGIN ANSWER HERE *****/
-
+  char **a = tokens; // store iterator
+  
+  if (tokens != NULL) {
+    token = strtok(line, SHELL_INPUT_DELIM);
+    while (token != NULL) {
+      *a++ = token;
+      token = strtok(NULL, SHELL_INPUT_DELIM);
+    }
+  } else {
+    printf("malloc'ed tokens is null");
+  }
   /*********************/
 
   return tokens;
