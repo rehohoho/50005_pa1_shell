@@ -268,13 +268,14 @@ char **tokenize_line_stdin(char *line)
   // 4. Add NULL termination in tokens so we know how many "valid" addresses there are in tokens
   /***** BEGIN ANSWER HERE *****/
   char **a = tokens; // store iterator
-  
+  current_number_tokens = 0;
   if (tokens != NULL) 
   {
     token = strtok(line, SHELL_INPUT_DELIM);
     while (token != NULL) 
     {
       *a++ = token;
+      current_number_tokens++;
       token = strtok(NULL, SHELL_INPUT_DELIM);
     }
     *a++ = token;
