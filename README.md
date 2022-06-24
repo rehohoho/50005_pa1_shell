@@ -50,3 +50,42 @@ Current working dir: /home/ruien/pa1
 ./files/oneline.txt
 ./files/paragraph.txt
 ```
+
+### main_loop
+```
+CSEShell Run successful. Running now: 
+Current working dir: /home/ruien/pa1
+🐚 Fri Jun 24 12:13:57 2022 CSEShell
+↳ asdfghj
+Command asdfghj not found: No such file or directory
+Command asdfghj has terminated abruptly.
+🐚 Fri Jun 24 12:14:00 2022 CSEShell
+↳ find .txt
+./files/intermediate.txt
+./files/combined.txt
+./files/lorem_ipsum.txt
+./files/file1.txt
+./files/file2.txt
+./files/oneline.txt
+./files/paragraph.txt
+🐚 Fri Jun 24 12:14:03 2022 CSEShell
+↳ usage
+Command not given. Type usage <command>.
+🐚 Fri Jun 24 12:14:06 2022 CSEShell
+↳ usage cd 
+Type: cd directory_name to change the current working directory of the shell
+🐚 Fri Jun 24 12:14:15 2022 CSEShell
+↳ help
+CSEShell Interface
+Usage: command arguments
+The following commands are implemented within the shell:
+  cd
+  help
+  exit
+  usage
+This shell also supports: listdir, listdirall, summond, checkdaemon, find, and countline.
+🐚 Fri Jun 24 12:14:18 2022 CSEShell
+↳ 
+🐚 Fri Jun 24 12:14:19 2022 CSEShell
+↳ exit
+```
