@@ -276,6 +276,7 @@ char **tokenize_line_stdin(char *line)
       *a++ = token;
       token = strtok(NULL, SHELL_INPUT_DELIM);
     }
+    *a++ = token;
   } 
   else 
   {
