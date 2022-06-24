@@ -192,8 +192,8 @@ int process_command(char **args)
       pid_t pid = fork();
       if (pid < 0)
       {
-        fprintf(stderr, "Fork has failed. Exiting now");
-        return 1;
+        perror("Fork has failed. Exiting.");
+        exit(EXIT_FAILURE);
       }
       else if (pid == 0)
       {
@@ -206,7 +206,7 @@ int process_command(char **args)
         waitpid(pid, &status, WUNTRACED);        
         // if child terminates properly, WIFEXITED(status) returns TRUE
         if (WIFEXITED(status)){
-            child_exit_status = WEXITSTATUS(status);
+          child_exit_status = WEXITSTATUS(status);
         }
       }
     }
@@ -241,7 +241,8 @@ char *read_line_stdin(void)
   } 
   else 
   {
-    printf("line is empty\n");
+    perror("Allocation error for `line`. Exiting. \n");
+    exit(EXIT_FAILURE);
   }
   /*********************/
 
@@ -279,9 +280,9 @@ char **tokenize_line_stdin(char *line)
   } 
   else 
   {
-    printf("malloc'ed tokens is null");
+    perror("Allocation error for tokens. Exiting.");
+    exit(EXIT_FAILURE);
   }
-  /*********************/
 
   return tokens;
 }
