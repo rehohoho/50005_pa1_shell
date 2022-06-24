@@ -198,7 +198,8 @@ int process_command(char **args)
       else if (pid == 0)
       {
         // child process
-        exec_sys_prog(args);
+        int child_status = exec_sys_prog(args);
+        exit(child_status);
       }
       else
       {
