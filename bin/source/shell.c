@@ -327,7 +327,15 @@ void main_loop(void)
     fflush(stdout); // clear the buffer and move the output to the console using fflush
 
     /***** BEGIN ANSWER HERE *****/
-    status = shell_exit(args); // remove this line when you work on this task
+    line = read_line_stdin();
+    // printf("The fetched line is : %s", line);
+    args = tokenize_line_stdin(line);
+    // for (char **arg=args; *arg; ++arg) {
+    //   printf("found %s\n", *arg);
+    // }
+    status = process_command(args);
+    free(line);
+    free(args);
 
     /*********************/
   } while (status);
