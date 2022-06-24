@@ -234,10 +234,9 @@ char *read_line_stdin(void)
   // DO NOT PRINT ANYTHING TO THE OUTPUT
 
   /***** BEGIN ANSWER HERE *****/
-  size_t len = 0;
   if (line != NULL) 
   {
-    getline(&line, &len, stdin);
+    getline(&line, &buf_size, stdin);
   } 
   else 
   {
