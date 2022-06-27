@@ -5,7 +5,8 @@ Count the number of lines in a file
 */
 int execute(char **args)
 {
-
+    char *line = NULL;
+    size_t len = 0;
     int number_of_lines = 0;
     FILE *fp;
 
@@ -26,6 +27,10 @@ int execute(char **args)
     // DO NOT PRINT ANYTHING TO THE OUTPUT
 
     /***** BEGIN ANSWER HERE *****/
+    while (getline(&line, &len, fp) != -1)
+    {
+        number_of_lines++;
+    }
 
     /*********************/
     fclose(fp); // close file.
