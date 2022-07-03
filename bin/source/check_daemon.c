@@ -19,6 +19,8 @@ int execute()
 
    int live_daemons = 0;
    FILE *fptr;
+   char *line = NULL;
+   size_t len = 0;
 
    /* TASK 7 */
    // 1. Open the file output.txt
@@ -29,6 +31,11 @@ int execute()
 
    /***** BEGIN ANSWER HERE *****/
 
+   fptr = fopen("output.txt", "r");
+   while (getline(&line, &len, fptr) != -1)
+   {
+      live_daemons++;
+   }
    /*********************/
    if (live_daemons == 0)
       printf("No daemon is alive right now.\n");
