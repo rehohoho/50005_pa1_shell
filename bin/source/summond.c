@@ -26,10 +26,53 @@ static int create_daemon()
     // 9. Return to main
     // DO NOT PRINT ANYTHING TO THE OUTPUT
     /***** BEGIN ANSWER HERE *****/
+    pid_t pid = fork();
+    if (pid == -1)
+    {
+        printf("error: fork failed\n");
+    }
+    else if (pid == 0)
+    {
+        setsid();
+        signal(SIGCHLD, SIG_IGN); // ignore sigchld
+        signal(SIGHUP, SIG_IGN);  // ignore sighup
+        pid_t pid_2 = fork();     // second fork - child id daemon
+        if (pid == -1)
+        {
+            printf("error: second fork failed\n");
+        }
+        else if (pid_2 == 0)
+        {
+            umask(0);
+            chdir("/");
+            /* Close all open file descriptors */
+            int x;
+            for (x = sysconf(_SC_OPEN_MAX); x >= 0; x--)
+            {
+                close(x);
+            }
+
+            /*
+             * Attach file descriptors 0, 1, and 2 to /dev/null. */
+            int fd0 = open("/dev/null", O_RDWR);
+            int fd1 = dup(0);
+            int fd2 = dup(0);
+        }
+        else
+        {
+            // second fork parent
+            exit(1);
+        }
+    }
+    else
+    {
+        // exit parent process to send child to init
+        exit(1);
+    }
 
     /*********************/
 
-    return 0;
+    return 1;
 }
 
 static int daemon_work()
