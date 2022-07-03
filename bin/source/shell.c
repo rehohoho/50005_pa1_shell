@@ -165,7 +165,7 @@ int process_command(char **args)
   // DO NOT PRINT ANYTHING TO THE OUTPUT
 
   /***** BEGIN ANSWER HERE *****/
-  if (args[0] == NULL) 
+  if (args[0] == NULL)
   {
     return 1;
   }
@@ -204,9 +204,10 @@ int process_command(char **args)
       else
       {
         int status;
-        waitpid(pid, &status, WUNTRACED);        
+        waitpid(pid, &status, WUNTRACED);
         // if child terminates properly, WIFEXITED(status) returns TRUE
-        if (WIFEXITED(status)){
+        if (WIFEXITED(status))
+        {
           child_exit_status = WEXITSTATUS(status);
         }
       }
@@ -235,11 +236,11 @@ char *read_line_stdin(void)
   // DO NOT PRINT ANYTHING TO THE OUTPUT
 
   /***** BEGIN ANSWER HERE *****/
-  if (line != NULL) 
+  if (line != NULL)
   {
     getline(&line, &buf_size, stdin);
-  } 
-  else 
+  }
+  else
   {
     perror("Allocation error for `line`. Exiting. \n");
     exit(EXIT_FAILURE);
@@ -269,18 +270,18 @@ char **tokenize_line_stdin(char *line)
   /***** BEGIN ANSWER HERE *****/
   char **a = tokens; // store iterator
   current_number_tokens = 0;
-  if (tokens != NULL) 
+  if (tokens != NULL)
   {
     token = strtok(line, SHELL_INPUT_DELIM);
-    while (token != NULL) 
+    while (token != NULL)
     {
       *a++ = token;
       current_number_tokens++;
       token = strtok(NULL, SHELL_INPUT_DELIM);
     }
     *a++ = token;
-  } 
-  else 
+  }
+  else
   {
     perror("Allocation error for tokens. Exiting.");
     exit(EXIT_FAILURE);
